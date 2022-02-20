@@ -1,31 +1,56 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import React, { useState } from "react";
 import tw from "tailwind-react-native-classnames";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
-const BoardCard = ({ data }) => {
-  //   console.log(data.contents[0]);
+const renderItem = (item) => {
+  const onPress = () => {};
   return (
-    <View style={tw`flex-1 items-center justify-center`}>
+    <TouchableHighlight
+      style={tw`px-3 py-2`}
+      underlayColor="#e9ecef"
+      key={item.id}
+      onPress={onPress}
+    >
+      <Text>{item?.content}</Text>
+    </TouchableHighlight>
+  );
+};
+
+const BoardCard = ({ data }) => {
+  return (
+    <View style={tw`h-64 items-center justify-center`}>
       <View
-        style={tw`border bg-white h-5/6 w-5/6 border-gray-300 rounded-lg shadow-md`}
+        style={[
+          tw`border bg-white border-gray-50 rounded-lg shadow-sm`,
+          {
+            height: "95%",
+            width: "95%",
+          },
+        ]}
       >
-        <View style={tw`bg-pink-100 flex-row justify-between p-2`}>
-          <Text>{data.name}</Text>
+        <View style={tw`flex-row justify-between p-3 pt-6`}>
+          <Text style={tw`font-bold text-base`}>{data?.name}</Text>
           <TouchableOpacity>
-            <Text>더보기</Text>
+            <Text
+              style={[
+                tw`px-3 text-red-500`,
+                {
+                  color: "#84cc16",
+                },
+              ]}
+            >
+              더보기
+            </Text>
           </TouchableOpacity>
         </View>
-        <FlatList
+        {/* <FlatList
           style={tw`flex-1`}
-          data={data.contents}
+          data={data?.contents}
           keyExtractor={(item) => item?.id}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={tw`flex-1 bg-red-100`}>
-              <Text>{item?.content}</Text>
-            </TouchableOpacity>
-          )}
-        />
+          renderItem={renderItem}
+        /> */}
+        {data.contents.map((item) => renderItem(item))}
       </View>
     </View>
   );
