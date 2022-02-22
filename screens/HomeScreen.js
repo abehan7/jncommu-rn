@@ -7,8 +7,9 @@ import { ScrollView } from "react-native";
 const data = {
   FreeBoard: {
     name: "자유게시판",
+    screen: "FreeBoard",
     contents: [
-      { id: 123, title: "제목1", content: "자연과 기술 질문" },
+      { id: 123, title: "제목1", content: "자연과 기술" },
       { id: 1234, title: "제목1", content: "해수돈구이 계산" },
       { id: 1235, title: "제목1", content: "띵지" },
       { id: 1236, title: "제목1", content: "눈물 장전" },
@@ -17,6 +18,7 @@ const data = {
   },
   InfoBoard: {
     name: "유용한 정보들",
+    screen: "InfoBoard",
     contents: [
       { id: 123, title: "제목1", content: "내용1" },
       { id: 1234, title: "제목1", content: "내용2" },
@@ -27,6 +29,7 @@ const data = {
   },
   HotBoard: {
     name: "실시간 인기 글",
+    screen: "HotBoard",
     contents: [
       { id: 123, title: "제목1", content: "내용1" },
       { id: 1234, title: "제목1", content: "내용2" },

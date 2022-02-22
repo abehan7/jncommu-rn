@@ -2,9 +2,11 @@ import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import React, { useState } from "react";
 import tw from "tailwind-react-native-classnames";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-
-const renderItem = (item) => {
-  const onPress = () => {};
+import { useNavigation } from "@react-navigation/native";
+const renderItem = (item, onPressWriting) => {
+  const onPress = () => {
+    onPressWriting(item);
+  };
   return (
     <TouchableHighlight
       style={tw`px-3 py-2`}
@@ -18,6 +20,14 @@ const renderItem = (item) => {
 };
 
 const BoardCard = ({ data }) => {
+  const navigation = useNavigation();
+  const onPressWriting = (writing) => {
+    navigation.navigate("WritingScreen", {
+      id: writing.id,
+      title: writing.title,
+      content: writing.content,
+    });
+  };
   return (
     <View style={tw`h-64 items-center justify-center`}>
       <View
@@ -39,18 +49,13 @@ const BoardCard = ({ data }) => {
                   color: "#84cc16",
                 },
               ]}
+              onPress={() => navigation.navigate(data?.screen)}
             >
               더보기
             </Text>
           </TouchableOpacity>
         </View>
-        {/* <FlatList
-          style={tw`flex-1`}
-          data={data?.contents}
-          keyExtractor={(item) => item?.id}
-          renderItem={renderItem}
-        /> */}
-        {data.contents.map((item) => renderItem(item))}
+        {data.contents.map((item) => renderItem(item, onPressWriting))}
       </View>
     </View>
   );

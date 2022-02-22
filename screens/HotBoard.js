@@ -10,5 +10,3 @@ const HotBoard = () => {
 };
 
 export default HotBoard;
-
-const styles = StyleSheet.create({});

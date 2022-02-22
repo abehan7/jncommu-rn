@@ -10,5 +10,3 @@ const InfoBoard = () => {
 };
 
 export default InfoBoard;
-
-const styles = StyleSheet.create({});

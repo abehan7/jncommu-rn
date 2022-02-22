@@ -8,6 +8,7 @@ import FreeBoard from "./screens/FreeBoard";
 import HotBoard from "./screens/HotBoard";
 import InfoBoard from "./screens/InfoBoard";
 import SafeViewAndroid from "./components/SafeViewAndroid";
+import WritingScreen from "./screens/WritingScreen";
 export default function App() {
   const Stack = createStackNavigator();
 
@@ -33,6 +34,11 @@ export default function App() {
           <Stack.Screen
             name="InfoBoard"
             component={InfoBoard}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WritingScreen"
+            component={WritingScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
