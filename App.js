@@ -4,11 +4,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./screens/HomeScreen";
-import FreeBoard from "./screens/FreeBoard";
-import HotBoard from "./screens/HotBoard";
-import InfoBoard from "./screens/InfoBoard";
 import SafeViewAndroid from "./components/SafeViewAndroid";
-import WritingScreen from "./screens/WritingScreen";
 export default function App() {
   const Stack = createStackNavigator();
 
@@ -19,26 +15,6 @@ export default function App() {
           <Stack.Screen
             name="HomeScreen"
             component={HomeScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="FreeBoard"
-            component={FreeBoard}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="HotBoard"
-            component={HotBoard}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="InfoBoard"
-            component={InfoBoard}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="WritingScreen"
-            component={WritingScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

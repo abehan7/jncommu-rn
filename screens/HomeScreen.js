@@ -3,42 +3,60 @@ import React from "react";
 import tw from "tailwind-react-native-classnames";
 import BoardCard from "../components/BoardCard";
 import { ScrollView } from "react-native";
+import InfoCard from "../components/InfoCard";
 
-const data = {
-  FreeBoard: {
-    name: "자유게시판",
-    screen: "FreeBoard",
-    contents: [
-      { id: 123, title: "제목1", content: "자연과 기술" },
-      { id: 1234, title: "제목1", content: "해수돈구이 계산" },
-      { id: 1235, title: "제목1", content: "띵지" },
-      { id: 1236, title: "제목1", content: "눈물 장전" },
-      { id: 1237, title: "제목1", content: "전남대가 낮은게 아닙니다" },
-    ],
+const data = [
+  {
+    image: require("../assets/Image/food1.png"),
+    title: "#1 밥집 후기 모음  ",
+    url: "https://everytime.kr/375208/v/174335251",
   },
-  InfoBoard: {
-    name: "유용한 정보들",
-    screen: "InfoBoard",
-    contents: [
-      { id: 123, title: "제목1", content: "내용1" },
-      { id: 1234, title: "제목1", content: "내용2" },
-      { id: 1235, title: "제목1", content: "내용3" },
-      { id: 1236, title: "제목1", content: "내용4" },
-      { id: 1237, title: "제목1", content: "내용5" },
-    ],
+  {
+    image: require("../assets/Image/test1.jpg"),
+    title: "#2 시험 꿀팁  ",
+    url: "https://everytime.kr/375208/v/179246708",
   },
-  HotBoard: {
-    name: "실시간 인기 글",
-    screen: "HotBoard",
-    contents: [
-      { id: 123, title: "제목1", content: "내용1" },
-      { id: 1234, title: "제목1", content: "내용2" },
-      { id: 1235, title: "제목1", content: "내용3" },
-      { id: 1236, title: "제목1", content: "내용4" },
-      { id: 1237, title: "제목1", content: "내용5" },
-    ],
+  {
+    image: require("../assets/Image/healing.jpg"),
+    title: "#3 힐링  ",
+    url: "https://everytime.kr/409819/v/243196350",
   },
-};
+  {
+    image: require("../assets/Image/homework.jpg"),
+    title: "#4 조별과제 꿀팁  ",
+    url: "https://everytime.kr/375208/v/243378622",
+  },
+  {
+    image: require("../assets/Image/paper.jpg"),
+    title: "#5 논문 꿀팁  ",
+    url: "https://everytime.kr/375210/v/229871745",
+  },
+  {
+    image: require("../assets/Image/library.jpg"),
+    title: "#6 도서관 꿀팁  ",
+    url: "https://everytime.kr/375208/v/186604182",
+  },
+  {
+    image: require("../assets/Image/religous2.jpg"),
+    title: "#7 신천지 조심",
+    url: "https://everytime.kr/375208/v/178473882",
+  },
+  {
+    image: require("../assets/Image/newbie.jpeg"),
+    title: "#8 새내기 꿀팁",
+    url: "https://everytime.kr/375210/v/163657760",
+  },
+  {
+    image: require("../assets/Image/darkHistory.jpg"),
+    title: "#9 전대 흑역사",
+    url: "https://everytime.kr/375208/v/164280645",
+  },
+  {
+    image: require("../assets/Image/photo.jpg"),
+    title: "#10 고마운 분",
+    url: "",
+  },
+];
 
 const HomeScreen = () => {
   return (
@@ -58,19 +76,18 @@ const HomeScreen = () => {
               },
             ]}
           >
-            JNC
+            전남대 에타 요약
           </Text>
         </View>
-        <View style={tw`bg-white flex-1 `}>
-          <View style={tw`flex-1`}>
-            <BoardCard data={data.FreeBoard} />
-          </View>
-          <View style={tw`flex-1`}>
-            <BoardCard data={data.InfoBoard} />
-          </View>
-          <View style={tw`flex-1`}>
-            <BoardCard data={data.HotBoard} />
-          </View>
+        <View style={tw`bg-white flex-1 m-4 flex`}>
+          {data.map((item, index) => (
+            <InfoCard
+              key={index}
+              image={item.image}
+              title={item.title}
+              url={item.url}
+            />
+          ))}
         </View>
       </ScrollView>
     </SafeAreaView>
